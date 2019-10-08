@@ -1,0 +1,16 @@
+Package: nohrsc
+Title: Access NOAA National Operational Hydrologic Remote Sensing Center's Snow Analysis Data Archive
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Joe",
+           family = "Shannon",
+           role = c("aut", "cre"),
+           email = "jpshanno@mtu.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    rappdirs,
+    httr
