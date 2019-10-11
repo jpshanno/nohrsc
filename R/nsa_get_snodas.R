@@ -21,7 +21,13 @@
 #' @examples
 #' # nsa_get_snodas(c("snow water equivalent"), start.date = "2010-01-06", end.date = "2010-01-08", path = "..")
 nsa_get_snodas <-
-  function(product, start.date, end.date = NULL, region = "North America", path = "", delete.archive = FALSE, force.download = FALSE){
+  function(product,
+           start.date,
+           end.date = NULL,
+           region = "North America",
+           path = "",
+           delete.archive = FALSE,
+           force.download = FALSE){
 
     stopifnot(region %in% c("CONUS", "North America"))
 
