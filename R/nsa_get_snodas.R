@@ -53,7 +53,7 @@ nsa_get_snodas <-
     product_files <-
       extract_archive(archive_file, product)
 
-    hdr <- lapply(product_files, create_hdr)
+    hdr <- create_hdr(product_files)
     prj <- lapply(product_files, create_prj)
 
     if(delete.archive){

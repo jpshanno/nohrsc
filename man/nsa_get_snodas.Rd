@@ -33,3 +33,6 @@ deleted after the rasters have been extracted. Deafults to FALSE}
 \description{
 Download and extract national snow anlaysis data
 }
+\examples{
+# nsa_get_snodas(c("snow water equivalent"), start.date = "2010-01-06", end.date = "2010-01-08", path = "..")
+}

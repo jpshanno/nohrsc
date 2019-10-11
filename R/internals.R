@@ -172,37 +172,53 @@ create_hdr <-
     txt_file <-
       sub("bil$", "txt", file)
 
+    hdr_lines <-
+      unlist(lapply(txt_file, readLines))
+
     NBITS <-
-      8*as.numeric(sub("\\D*", "", grep("(?<=Data bytes per pixel: )[0-9]*", readLines(txt_file), value = TRUE, perl = TRUE)))
+      8*as.numeric(sub("\\D*", "", grep("(?<=Data bytes per pixel: )[0-9]*", hdr_lines, value = TRUE, perl = TRUE)))
     NCOLS <-
-      sub("\\D*", "", grep("(?<=Number of columns)[0-9]*", readLines(txt_file), value = TRUE, perl = TRUE))
+      sub("\\D*", "", grep("(?<=Number of columns)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
     NROWS <-
-      sub("\\D*", "", grep("(?<=Number of rows)[0-9]*", readLines(txt_file), value = TRUE, perl = TRUE))
+      sub("\\D*", "", grep("(?<=Number of rows)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
     ULXMP <-
-      sub("\\D*", "", grep("(?<=Benchmark x-axis coordinate)[0-9]*", readLines(txt_file), value = TRUE, perl = TRUE))
+      sub("\\D*", "", grep("(?<=Benchmark x-axis coordinate)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
     ULYMP <-
-      sub("\\D*", "", grep("(?<=Benchmark y-axis coordinate)[0-9]*", readLines(txt_file), value = TRUE, perl = TRUE))
+      sub("\\D*", "", grep("(?<=Benchmark y-axis coordinate)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
     XDIM <-
-      sub("\\D*", "", grep("(?<=X-axis resolution)[0-9]*", readLines(txt_file), value = TRUE, perl = TRUE))
+      sub("\\D*", "", grep("(?<=X-axis resolution)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
     YDIM <-
-      sub("\\D*", "", grep("(?<=Y-axis resolution)[0-9]*", readLines(txt_file), value = TRUE, perl = TRUE))
+      sub("\\D*", "", grep("(?<=Y-axis resolution)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
+
+    # Need to confirm that all rows were found for each .txt file
 
     hdr_content <-
-      c("byteorder M",
-        "layout bil",
-        "nbands 1",
-        paste("nbits", NBITS),
-        paste("ncols", NCOLS),
-        paste("nrows", NROWS),
-        paste("ulxmap", ULXMP),
-        paste("ulymap", ULYMP),
-        paste("xdim", XDIM),
-        paste("ydim", YDIM))
+      mapply(function(NBITS, NCOLS, NROWS, ULXMP,
+                      ULYMP, XDIM, YDIM){
+        c("byteorder M",
+          "layout bil",
+          "nbands 1",
+          paste("nbits", NBITS),
+          paste("ncols", NCOLS),
+          paste("nrows", NROWS),
+          paste("ulxmap", ULXMP),
+          paste("ulymap", ULYMP),
+          paste("xdim", XDIM),
+          paste("ydim", YDIM))},
+        NBITS, NCOLS, NROWS, ULXMP, ULYMP, XDIM, YDIM,
+        SIMPLIFY = FALSE)
 
-    writeLines(hdr_content,
-               hdr_file)
+    mapply(function(hdr_content, hdr_file, txt_file){
+      written <-
+        writeLines(hdr_content,
+                   hdr_file)
 
-    unlink(txt_file)
+      deleted <-
+        unlink(txt_file)},
+      hdr_content,
+      hdr_file,
+      txt_file)
+
   }
 
 create_prj <-
