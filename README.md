@@ -7,27 +7,12 @@
 
 <!-- badges: end -->
 
-The goal of nohrsc is to …
-
-## Minimum Viable Product
-
-  - Download data (use \*apply to make \>1 easy)
-  - Query/Load downloaded data
-  - Delete data
-
-## First Improvement
-
-  - Force redownload (delete/overwrite existing data)
-  - Improve queries
-
-## Second Improvement
-
-  - Allow clipping before storage to save disk space
-
-## To Do
-
-  - \[ \] Add tests  
-  - \[ \] Use assertthat to check archive/raster filenames etc
+nohrsc is designed to make it easy to access the NOHRSC data archive. It
+takes common name arguments and dates to construct the proper URLs and
+access the correctly formatted file names. Multiple days and products
+can be downloaded and extracted in a single call. The extracted rasters
+will be converted to \*.bil format and an appropriate \*.hdr and \*.prj
+will be created for each raster.
 
 ## Installation
 
@@ -50,11 +35,37 @@ install.packages(sub(".zip$", "", nohrsc_source),
                  type = "source")
 ```
 
+## Development Timeline
+
+### Minimum Viable Product
+
+  - \[x\] Download data (use \*apply to make \>1 easy)
+  - \[ \] Automatic data handling if path not specified (via rappdirs)
+  - \[ \] Query/Load downloaded data
+  - \[ \] Add citations to NOHRSC data & documentat
+  - \[ \] Add tests  
+  - \[ \] Use assertthat to check archive/raster filenames etc
+
+### First Improvement
+
+  - \[ \] Improve queries
+  - \[ \] Delete data
+
+### Second Improvement
+
+  - \[ \] Allow clipping before storage to save disk space
+  - \[ \] [Change NA values being recorded as large positive
+    integers](https://www.nohrsc.noaa.gov/archived_data/instructions.html)
+
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Download data over three days and extract SWE and melt data:
 
 ``` r
 library(nohrsc)
-## basic example code
+rasters <- 
+  nsa_get_snodas(product = c("snow water equivalent", "snow melt"),
+                 start.date = "2015-04-01",
+                 end.date = "2015-04-03",
+                 path = "snodas")
 ```

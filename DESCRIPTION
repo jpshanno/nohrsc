@@ -6,8 +6,12 @@ Authors@R:
            family = "Shannon",
            role = c("aut", "cre"),
            email = "jpshanno@mtu.edu",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: 
+           comment = c(ORCID = "0000-0002-0052-9962"))
+Description: Simplifies access to the NOHRSC data archive. It takes common name 
+    arguments and dates to construct the proper URLs and access the correctly 
+    formatted file names. Multiple days and products can be downloaded and 
+    extracted in a single call. The extracted rasters will be converted to .bil 
+    format and an appropriate .hdr and .prj will be created for each raster.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

@@ -15,11 +15,19 @@
 #'   deleted after the rasters have been extracted. Deafults to FALSE
 #' @param force.download Not currently used
 #'
-#' @return
+#' @return A charcter vector of the extracted filenames
+#'
+#' @references \url{https://nsidc.org/data/g02158}
 #' @export
 #'
 #' @examples
-#' # nsa_get_snodas(c("snow water equivalent"), start.date = "2010-01-06", end.date = "2010-01-08", path = "..")
+#' \dontrun{
+#' raster_files <-
+#'   nsa_get_snodas(c("snow water equivalent", "snow melt"),
+#'                  start.date = "2010-01-06",
+#'                  end.date = "2010-01-08",
+#'                  path = "snodas")
+#' }
 nsa_get_snodas <-
   function(product,
            start.date,
@@ -46,8 +54,8 @@ nsa_get_snodas <-
 
     if(sum(!file.exists(archive_file)) != 0){
       check_connection()
-      download.file(url,
-                    archive_file)
+      utils::download.file(url,
+                           archive_file)
     }
 
     product_files <-
@@ -59,5 +67,7 @@ nsa_get_snodas <-
     if(delete.archive){
       removed <- lapply(archive_file,
                         unlink)
+
+    product_files
     }
   }

@@ -30,9 +30,21 @@ deleted after the rasters have been extracted. Deafults to FALSE}
 
 \item{force.download}{Not currently used}
 }
+\value{
+A charcter vector of the extracted filenames
+}
 \description{
 Download and extract national snow anlaysis data
 }
 \examples{
-# nsa_get_snodas(c("snow water equivalent"), start.date = "2010-01-06", end.date = "2010-01-08", path = "..")
+\dontrun{
+raster_files <-
+  nsa_get_snodas(c("snow water equivalent", "snow melt"),
+                 start.date = "2010-01-06",
+                 end.date = "2010-01-08",
+                 path = "snodas")
+}
+}
+\references{
+\url{https://nsidc.org/data/g02158}
 }

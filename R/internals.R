@@ -1,3 +1,4 @@
+#' Look-up automatic path if path not supplied
 nsa_path <-
   function(path = ""){
     if(path != ""){
@@ -10,6 +11,7 @@ nsa_path <-
     stop("path must be specified, future versions will allows automatic storage.")
   }
 
+#' Check for internet connection
 check_connection <-
   function(){
     if(!curl::has_internet()){
@@ -17,6 +19,7 @@ check_connection <-
     }
   }
 
+#' Get product number from common name
 look_up_product <-
   function(product){
 
@@ -51,11 +54,7 @@ look_up_product <-
            USE.NAMES = FALSE)
   }
 
-build_product <-
-  function(prod, date){
-    # Build product name based on naming conventions
-  }
-
+#' Format supplied date
 format_date <-
   function(start.date, end.date = NULL){
 
@@ -116,6 +115,7 @@ format_date <-
     )
   }
 
+# Create ftp url for download
 build_url <-
   function(region, nsa_date){
 
@@ -148,19 +148,21 @@ build_url <-
     paste0(base_url, url_params)
   }
 
-build_basefile <-
-  function(product){
-    # Use product info & date to build archive & raster file basename
-    # Build urls for all combinations of data at once
-    # dates <- 1:10
-    # products <- letters[1:3]
-    # paste(expand.grid(dates, products)[[1]], expand.grid(dates, products)[[2]], sep = ".")
+#
+# build_basefile <-
+#   function(product){
+#     # Use product info & date to build archive & raster file basename
+#     # Build urls for all combinations of data at once
+#     # dates <- 1:10
+#     # products <- letters[1:3]
+#     # paste(expand.grid(dates, products)[[1]], expand.grid(dates, products)[[2]], sep = ".")
+#
+#     product <-
+#       look_up_product(product)
+#
+#   }
 
-    product <-
-      look_up_product(product)
-
-  }
-
+#' Create .hdr file for each extracted raster
 create_hdr <-
   function(file){
     # THIS NEEDS TO BE UPDATED TO GET ulxmap, ulymap, xdim, ydim FROM SNODAS HEADER
@@ -221,6 +223,7 @@ create_hdr <-
 
   }
 
+#' Create .prj file for each extracted raster
 create_prj <-
   function(file){
     prj_file <-
@@ -239,6 +242,7 @@ create_prj <-
 #
 #   }
 
+#' Extract selected files from archive
 extract_archive <-
   function(archive, product){
     combos <-
@@ -262,9 +266,9 @@ extract_archive <-
             build_filenames(product, longdate, region)
 
           tar_results <-
-            untar(archive,
-                  files = files[1:2],
-                  exdir = dirname(archive))
+            utils::untar(archive,
+                         files = files[1:2],
+                         exdir = dirname(archive))
 
           unzipped_files <-
             vapply(file.path(dirname(archive), files[1:2]),
@@ -289,6 +293,7 @@ extract_archive <-
     c(extracted_files)
   }
 
+#' Build filenames for each product/archive
 build_filenames <-
   function(product, longdate, region){
     # rr_mmmffppppSvvvvTttttaaaaTSyyyymmddhhIP00Z.xxx.gz
