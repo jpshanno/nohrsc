@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 The goal of nohrsc is to ...
 
-## MVP
+## Minimum Viable Product
 - Download data (use *apply to make >1 easy)
 - Query/Load downloaded data
 - Delete data
@@ -33,12 +33,30 @@ The goal of nohrsc is to ...
 ## Second Improvement
 - Allow clipping before storage to save disk space
 
+## To Do
+
+- [ ] Add tests  
+- [ ] Use assertthat to check archive/raster filenames etc  
+
 ## Installation
 
-You can install the released version of nohrsc from [CRAN](https://CRAN.R-project.org) with:
+You can install nohrsc using `remotes` by
 
 ``` r
-install.packages("nohrsc")
+remotes::install_github("jpshanno/nohrsc")
+```
+
+or without `remotes` by
+
+``` r
+nohrsc_source <- file.path(tempdir(), "nohrsc-master.zip")
+download.file("https://github.com/jpshanno/nohrsc/archive/master.zip",
+              nohrsc_source)
+unzip(nohrsc_source,
+        exdir = dirname(nohrsc_source))
+install.packages(sub(".zip$", "", nohrsc_source),
+                 repos = NULL,
+                 type = "source")
 ```
 
 ## Example
@@ -49,19 +67,3 @@ This is a basic example which shows you how to solve a common problem:
 library(nohrsc)
 ## basic example code
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!

@@ -39,6 +39,7 @@ nsa_get_snodas <-
       file.path(nsa_path(path), regmatches(url, regexpr("SNODAS_.*.tar$", url)))
 
     if(sum(!file.exists(archive_file)) != 0){
+      check_connection()
       download.file(url,
                     archive_file)
     }
