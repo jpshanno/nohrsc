@@ -268,6 +268,7 @@ extract_archive <-
           tar_results <-
             utils::untar(archive,
                          files = files[1:2],
+                         tar = "internal",
                          exdir = dirname(archive))
 
           unzipped_files <-
