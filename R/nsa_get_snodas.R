@@ -67,7 +67,6 @@ nsa_get_snodas <-
     if(delete.archive){
       removed <- lapply(archive_file,
                         unlink)
-
-    product_files
     }
+    product_files
   }
