@@ -55,7 +55,8 @@ nsa_get_snodas <-
     if(sum(!file.exists(archive_file)) != 0){
       check_connection()
       utils::download.file(url,
-                           archive_file)
+                           archive_file,
+                           method = "curl")
     }
 
     product_files <-

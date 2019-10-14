@@ -16,5 +16,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
+    curl,
     lubridate
 RoxygenNote: 6.1.1
