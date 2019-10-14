@@ -337,7 +337,7 @@ build_filenames <-
                              "snow depth" = "T0001",
                              "snow pack average temperature" = "A0024",
                              "blowing snow sublimation" = "T0024",
-                             "snow melt" = "T0001",
+                             "snow melt" = "T0024",
                              "snow pack sublimation" = "T0024")
 
              aaaa <- "TTNA"
