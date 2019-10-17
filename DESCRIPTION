@@ -17,5 +17,6 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     curl,
-    lubridate
+    lubridate,
+    R.utils
 RoxygenNote: 6.1.1

@@ -1,4 +1,4 @@
-#' Look-up automatic path if path not supplied
+# Look-up automatic path if path not supplied
 nsa_path <-
   function(path = ""){
     if(path != ""){
@@ -11,7 +11,7 @@ nsa_path <-
     stop("path must be specified, future versions will allows automatic storage.")
   }
 
-#' Check for internet connection
+# Check for internet connection
 check_connection <-
   function(){
     if(!curl::has_internet()){
@@ -19,7 +19,7 @@ check_connection <-
     }
   }
 
-#' Get product number from common name
+# Get product number from common name
 look_up_product <-
   function(product){
 
@@ -54,7 +54,7 @@ look_up_product <-
            USE.NAMES = FALSE)
   }
 
-#' Format supplied date
+# Format supplied date
 format_date <-
   function(start.date, end.date = NULL){
 
@@ -162,7 +162,7 @@ build_url <-
 #
 #   }
 
-#' Create .hdr file for each extracted raster
+# Create .hdr file for each extracted raster
 create_hdr <-
   function(file){
     # THIS NEEDS TO BE UPDATED TO GET ulxmap, ulymap, xdim, ydim FROM SNODAS HEADER
@@ -223,7 +223,7 @@ create_hdr <-
 
   }
 
-#' Create .prj file for each extracted raster
+# Create .prj file for each extracted raster
 create_prj <-
   function(file){
     prj_file <-
@@ -242,7 +242,7 @@ create_prj <-
 #
 #   }
 
-#' Extract selected files from archive
+# Extract selected files from archive
 extract_archive <-
   function(archive, product){
     combos <-
@@ -266,14 +266,14 @@ extract_archive <-
             build_filenames(product, longdate, region)
 
           tar_results <-
-            utils::untar(archive,
+           untar(archive,
                          files = files[1:2],
                          tar = "internal",
                          exdir = dirname(archive))
 
           unzipped_files <-
             vapply(file.path(dirname(archive), files[1:2]),
-                   R.utils::gunzip,
+                   gunzip,
                    character(1),
                    overwrite = TRUE,
                    USE.NAMES = FALSE)
@@ -294,7 +294,7 @@ extract_archive <-
     c(extracted_files)
   }
 
-#' Build filenames for each product/archive
+# Build filenames for each product/archive
 build_filenames <-
   function(product, longdate, region){
     # rr_mmmffppppSvvvvTttttaaaaTSyyyymmddhhIP00Z.xxx.gz
