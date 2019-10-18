@@ -1,6 +1,6 @@
 Package: nohrsc
 Title: Access NOAA National Operational Hydrologic Remote Sensing Center's Snow Analysis Data Archive
-Version: 0.0.0.9000
+Version: 0.0.9
 Authors@R: 
     person(given = "Joe",
            family = "Shannon",
