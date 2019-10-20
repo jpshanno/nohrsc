@@ -54,9 +54,11 @@ nsa_get_snodas <-
 
     if(sum(!file.exists(archive_file)) != 0){
       check_connection()
-      download.file(url,
-                    archive_file,
-                    method = "curl")
+      downloads <-
+        mapply(download.file,
+               url,
+               archive_file,
+               MoreArgs = list(method = "curl"))
     }
 
     product_files <-
