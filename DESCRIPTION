@@ -20,3 +20,6 @@ Imports:
     lubridate,
     R.utils
 RoxygenNote: 6.1.1
+Suggests: 
+    spelling
+Language: en-US

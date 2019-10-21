@@ -2,14 +2,14 @@
 % Please edit documentation in R/nsa_get_snodas.R
 \name{nsa_get_snodas}
 \alias{nsa_get_snodas}
-\title{Download and extract national snow anlaysis data}
+\title{Download and extract national snow analysis data}
 \usage{
 nsa_get_snodas(product, start.date, end.date = NULL,
   region = "North America", path = "", delete.archive = FALSE,
   force.download = FALSE)
 }
 \arguments{
-\item{product}{A character vector of one or more prodcuts available via
+\item{product}{A character vector of one or more products available via
 NOHRSC Acceptable values are "liquid precipitation", "snow precipitation",
 "snow water equivalent", "snow depth", "snow pack average temperature",
 "blowing snow sublimation", "snow melt", and "snow pack sublimation"}
@@ -18,7 +18,7 @@ NOHRSC Acceptable values are "liquid precipitation", "snow precipitation",
 or a datetime object}
 
 \item{end.date}{NULL if only one date is wanted, otherwise the end date of a
-time span formated as start.date}
+time span formatted as start.date}
 
 \item{region}{Either "CONUS" or "North America" indicating if the results
 should be contained to the continental US or not}
@@ -26,15 +26,15 @@ should be contained to the continental US or not}
 \item{path}{The output path to save the raster data}
 
 \item{delete.archive}{A logical indicating if the downloaded archives be
-deleted after the rasters have been extracted. Deafults to FALSE}
+deleted after the rasters have been extracted. Defaults to FALSE}
 
 \item{force.download}{Not currently used}
 }
 \value{
-A charcter vector of the extracted filenames
+A character vector of the extracted filenames
 }
 \description{
-Download and extract national snow anlaysis data
+Download and extract national snow analysis data
 }
 \examples{
 \dontrun{

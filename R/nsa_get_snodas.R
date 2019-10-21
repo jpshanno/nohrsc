@@ -1,21 +1,21 @@
-#' Download and extract national snow anlaysis data
+#' Download and extract national snow analysis data
 #'
-#' @param product A character vector of one or more prodcuts available via
+#' @param product A character vector of one or more products available via
 #'   NOHRSC Acceptable values are "liquid precipitation", "snow precipitation",
 #'   "snow water equivalent", "snow depth", "snow pack average temperature",
 #'   "blowing snow sublimation", "snow melt", and "snow pack sublimation"
 #' @param start.date A start date supplied as a character string ("YYYY-MM-DD")
 #'   or a datetime object
 #' @param end.date NULL if only one date is wanted, otherwise the end date of a
-#'   time span formated as start.date
+#'   time span formatted as start.date
 #' @param region Either "CONUS" or "North America" indicating if the results
 #'   should be contained to the continental US or not
 #' @param path The output path to save the raster data
 #' @param delete.archive A logical indicating if the downloaded archives be
-#'   deleted after the rasters have been extracted. Deafults to FALSE
+#'   deleted after the rasters have been extracted. Defaults to FALSE
 #' @param force.download Not currently used
 #'
-#' @return A charcter vector of the extracted filenames
+#' @return A character vector of the extracted filenames
 #'
 #' @references \url{https://nsidc.org/data/g02158}
 #' @export

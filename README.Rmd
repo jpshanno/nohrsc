@@ -50,8 +50,8 @@ install.packages(sub(".zip$", "", nohrsc_source),
 - [x] Download data (use *apply to make >1 easy)
 - [ ] Automatic data handling if path not specified (via rappdirs)
 - [ ] Query/Load downloaded data
-- [ ] Add citations to NOHRSC data & documentat
-- [ ] Add tests  
+- [ ] Add citations to NOHRSC data & documentation
+- [ ] Unit tests  
 - [ ] Use assertthat to check archive/raster filenames etc  
 
 ### First Improvement
