@@ -5,6 +5,12 @@
 
 <!-- badges: start -->
 
+[![Travis-CI Build
+Status](https://travis-ci.org/jpshanno/nohrsc.svg?branch=master)](https://travis-ci.org/jpshanno/nohrsc)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/jpshanno/nohrsc?branch=master&svg=true)](https://ci.appveyor.com/project/jpshanno/nohrsc)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/jpshanno/nohrsc/master.svg)](https://codecov.io/github/jpshanno/nohrsc?branch=master)
 <!-- badges: end -->
 
 nohrsc is designed to make it easy to access the NOHRSC data archive. It
@@ -34,6 +40,10 @@ install.packages(sub(".zip$", "", nohrsc_source),
                  repos = NULL,
                  type = "source")
 ```
+
+Alternatively a [Windows binary
+version](%22https://pages.mtu.edu/~jpshanno/win_binaries/nohrsc.zip%22)
+is available for download.
 
 ## Development Timeline
 
