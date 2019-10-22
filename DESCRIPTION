@@ -1,6 +1,6 @@
 Package: nohrsc
 Title: Access NOAA National Operational Hydrologic Remote Sensing Center's Snow Analysis Data Archive
-Version: 0.0.9
+Version: 0.0.91
 Authors@R: 
     person(given = "Joe",
            family = "Shannon",
@@ -21,5 +21,6 @@ Imports:
     R.utils
 RoxygenNote: 6.1.1
 Suggests: 
-    spelling
+    spelling,
+    testthat
 Language: en-US

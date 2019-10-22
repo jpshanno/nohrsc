@@ -162,6 +162,30 @@ build_url <-
 #
 #   }
 
+get_hdr_info <-
+  function(param, hdr_lines){
+    match.arg(param,
+              c("nbits", "nrows", "ncols", "xmp", "ymp", "xdim", "ydim"))
+
+    match_string <-
+      switch(param,
+             nbits = "(?<=Data bytes per pixel: )[0-9]*",
+             ncols = "(?<=Number of columns)[0-9]*",
+             nrows = "(?<=Number of rows)[0-9]*",
+             xmp = "(?<=Benchmark x-axis coordinate)[0-9]*",
+             ymp = "(?<=Benchmark y-axis coordinate)[\\-0-9]*",
+             xdim = "(?<=X-axis resolution)[0-9]*",
+             ydim = "(?<=Y-axis resolution)[0-9]*")
+
+    hdr_line <-
+      grep(match_string, hdr_lines, value = TRUE, perl = TRUE)
+
+    param_match <-
+      regexec("(?<=: ).*$", hdr_line, perl = TRUE)
+
+    regmatches(hdr_line, param_match)[[1]]
+  }
+
 # Create .hdr file for each extracted raster
 create_hdr <-
   function(file){
@@ -178,19 +202,19 @@ create_hdr <-
       unlist(lapply(txt_file, readLines))
 
     NBITS <-
-      8*as.numeric(sub("\\D*", "", grep("(?<=Data bytes per pixel: )[0-9]*", hdr_lines, value = TRUE, perl = TRUE)))
+      8*as.numeric(get_hdr_info("nbits", hdr_lines))
     NCOLS <-
-      sub("\\D*", "", grep("(?<=Number of columns)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
+      get_hdr_info("ncols", hdr_lines)
     NROWS <-
-      sub("\\D*", "", grep("(?<=Number of rows)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
+      get_hdr_info("nrows", hdr_lines)
     ULXMP <-
-      sub("\\D*", "", grep("(?<=Benchmark x-axis coordinate)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
+      get_hdr_info("xmp", hdr_lines)
     ULYMP <-
-      sub("\\D*", "", grep("(?<=Benchmark y-axis coordinate)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
+      get_hdr_info("ymp", hdr_lines)
     XDIM <-
-      sub("\\D*", "", grep("(?<=X-axis resolution)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
+      get_hdr_info("xdim", hdr_lines)
     YDIM <-
-      sub("\\D*", "", grep("(?<=Y-axis resolution)[0-9]*", hdr_lines, value = TRUE, perl = TRUE))
+      get_hdr_info("ydim", hdr_lines)
 
     # Need to confirm that all rows were found for each .txt file
 
