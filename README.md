@@ -41,6 +41,8 @@ install.packages(sub(".zip$", "", nohrsc_source),
                  type = "source")
 ```
 
+### Windows Installation
+
 Alternatively a [Windows binary
 version](https://pages.mtu.edu/~jpshanno/win_binaries/nohrsc.zip) is
 available for download.
