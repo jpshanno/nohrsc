@@ -30,14 +30,22 @@ format and an appropriate \*.hdr and \*.prj will be created for each raster.
 
 ## Installation
 
-You can install nohrsc using `remotes` by
+If you are using Windows you should install nohrsc by downloading the binary
+version (see below) of the package. Otherwise you can build `nohrsc` from these
+source files.
 
+**Windows Installation**
+``` r
+install.packages("https://pages.mtu.edu/~jpshanno/win_binaries/nohrsc.zip", 
+                 repos = NULL)
+```
+**`remotes` Linux Installation**
 ``` r
 remotes::install_github("jpshanno/nohrsc")
 ```
 
 or without `remotes` by
-
+**Linux Installation without `remotes` package**
 ``` r
 nohrsc_source <- file.path(tempdir(), "nohrsc-master.zip")
 download.file("https://github.com/jpshanno/nohrsc/archive/master.zip",
@@ -48,11 +56,6 @@ install.packages(sub(".zip$", "", nohrsc_source),
                  repos = NULL,
                  type = "source")
 ```
-
-### Windows Installation
-
-Alternatively a [Windows binary version](https://pages.mtu.edu/~jpshanno/win_binaries/nohrsc.zip) is available for download.
-
 ## Development Timeline
 ### Minimum Viable Product
 - [x] Download data (use *apply to make >1 easy)

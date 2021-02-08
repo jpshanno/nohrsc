@@ -13,7 +13,7 @@ Simplifies access to the NOHRSC data archive. It takes common name
     format and an appropriate .hdr and .prj will be created for each raster.
 }
 \author{
-\strong{Maintainer}: Joe Shannon \email{jpshanno@mtu.edu} (0000-0002-0052-9962)
+\strong{Maintainer}: Joe Shannon \email{jpshanno@mtu.edu} (\href{https://orcid.org/0000-0002-0052-9962}{ORCID})
 
 }
 \keyword{internal}

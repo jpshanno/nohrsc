@@ -22,13 +22,24 @@ will be created for each raster.
 
 ## Installation
 
-You can install nohrsc using `remotes` by
+If you are using Windows you should install nohrsc by downloading the
+binary version (see below) of the package. Otherwise you can build
+`nohrsc` from these source files.
+
+**Windows Installation**
+
+``` r
+install.packages("https://pages.mtu.edu/~jpshanno/win_binaries/nohrsc.zip", 
+                 repos = NULL)
+```
+
+**`remotes` Linux Installation**
 
 ``` r
 remotes::install_github("jpshanno/nohrsc")
 ```
 
-or without `remotes` by
+or without `remotes` by **Linux Installation without `remotes` package**
 
 ``` r
 nohrsc_source <- file.path(tempdir(), "nohrsc-master.zip")
@@ -41,32 +52,26 @@ install.packages(sub(".zip$", "", nohrsc_source),
                  type = "source")
 ```
 
-### Windows Installation
-
-Alternatively a [Windows binary
-version](https://pages.mtu.edu/~jpshanno/win_binaries/nohrsc.zip) is
-available for download.
-
 ## Development Timeline
 
 ### Minimum Viable Product
 
-  - \[x\] Download data (use \*apply to make \>1 easy)
-  - \[ \] Automatic data handling if path not specified (via rappdirs)
-  - \[ \] Query/Load downloaded data
-  - \[ \] Add citations to NOHRSC data & documentation
-  - \[ \] Unit tests  
-  - \[ \] Use assertthat to check archive/raster filenames etc
+  - [x] Download data (use \*apply to make \>1 easy)
+  - [ ] Automatic data handling if path not specified (via rappdirs)
+  - [ ] Query/Load downloaded data
+  - [ ] Add citations to NOHRSC data & documentation
+  - [ ] Unit tests  
+  - [ ] Use assertthat to check archive/raster filenames etc
 
 ### First Improvement
 
-  - \[ \] Improve queries
-  - \[ \] Delete data
+  - [ ] Improve queries
+  - [ ] Delete data
 
 ### Second Improvement
 
-  - \[ \] Allow clipping before storage to save disk space
-  - \[ \] [Change NA values being recorded as large positive
+  - [ ] Allow clipping before storage to save disk space
+  - [ ] [Change NA values being recorded as large positive
     integers](https://www.nohrsc.noaa.gov/archived_data/instructions.html)
 
 ## Example
