@@ -4,9 +4,15 @@
 \alias{nsa_get_snodas}
 \title{Download and extract national snow analysis data}
 \usage{
-nsa_get_snodas(product, start.date, end.date = NULL,
-  region = "North America", path = "", delete.archive = FALSE,
-  force.download = FALSE)
+nsa_get_snodas(
+  product,
+  start.date,
+  end.date = NULL,
+  region = "North America",
+  path = "",
+  delete.archive = FALSE,
+  force.download = FALSE
+)
 }
 \arguments{
 \item{product}{A character vector of one or more products available via
@@ -28,7 +34,8 @@ should be contained to the continental US or not}
 \item{delete.archive}{A logical indicating if the downloaded archives be
 deleted after the rasters have been extracted. Defaults to FALSE}
 
-\item{force.download}{Not currently used}
+\item{force.download}{A logical indicating if archive should be redownloaded
+if the file exists in \code{path}.}
 }
 \value{
 A character vector of the extracted filenames

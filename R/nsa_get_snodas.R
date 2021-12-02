@@ -13,7 +13,8 @@
 #' @param path The output path to save the raster data
 #' @param delete.archive A logical indicating if the downloaded archives be
 #'   deleted after the rasters have been extracted. Defaults to FALSE
-#' @param force.download Not currently used
+#' @param force.download A logical indicating if archive should be redownloaded
+#'   if the file exists in \code{path}.
 #'
 #' @return A character vector of the extracted filenames
 #'
@@ -44,20 +45,24 @@ nsa_get_snodas <-
     date <-
       format_date(start.date, end.date)
 
-    # Would check for existing data here and then download and extract
-
     url <-
       build_url(region, date)
 
     archive_file <-
       file.path(nsa_path(path), regmatches(url, regexpr("SNODAS_.*.tar$", url)))
 
-    if(sum(!file.exists(archive_file)) != 0){
+    missing_files <- !file.exists(archive_file)
+
+    if(force.download) {
+      missing_files <- rep(FALSE, length(archive_file))
+    }
+
+    if(sum(missing_files) > 0){
       check_connection()
       downloads <-
         mapply(download.file,
-               url,
-               archive_file,
+               url[missing_files],
+               archive_file[missing_files],
                MoreArgs = list(method = "curl"))
     }
 
