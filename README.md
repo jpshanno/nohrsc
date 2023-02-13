@@ -29,8 +29,10 @@ binary version (see below) of the package. Otherwise you can build
 **Windows Installation**
 
 ``` r
-install.packages("https://pages.mtu.edu/~jpshanno/win_binaries/nohrsc.zip", 
-                 repos = NULL)
+url = "https://drive.google.com/file/d/1blFGzzeLpTuuKM_Bfq812CIGQ9m88VH2/view?usp=sharing"
+fn = tempfile(fileext=".zip")
+download.file(destfile = fn, url = url)
+install.packages(fn, repos = NULL)
 ```
 
 **`remotes` Linux Installation**
